@@ -17,7 +17,13 @@
   /* Depth & layout */
   --shadow:0 12px 24px rgba(2,8,23,.08), 0 2px 6px rgba(2,8,23,.06); /* soft elevation */
   --container: 1200px;          /* max width for centered content */
+
+  --hero-focus-x: 65%;  /* left↔right aim (65% = slight right bias) */
+  --hero-focus-y: 18%;  /* up↔down aim (smaller % = show more TOP) */
 }
+/* Hero focal point — adjust to keep her face in frame */
+
+
 
 html,body{
   margin:0;                     /* remove default margins */
@@ -96,20 +102,25 @@ a{ color:inherit; text-decoration:none } /* links inherit text color; no underli
   background:#d1d5db; border-radius:1px;
 }
 
-/* =====
-   HERO
-   ===== */
-
-.hero{ position:relative; isolation:isolate }  /* create stacking context */
-.hero-media{ position:absolute; inset:0; z-index:-1 }  /* background layer */
-
-/* Fill viewport width/height with the image and bias subject to the right,
-   matching the Canva composition */
-.hero-media img{
-  width:100%; height:100%; object-fit:cover; object-position:65% center;
+/* HERO */
+.hero{
+  position: relative;
+  isolation: isolate;
+  /* Fill the screen cleanly (mobile-safe dynamic viewport height) */
+  min-height: clamp(520px, 92dvh, 980px);
 }
 
-/* Left-to-right gradient: darker on left where text sits, fading to clear */
+.hero-media{ position:absolute; inset:0; z-index:-1; }
+
+.hero-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  /* Keep her face visible by aiming the crop with variables above */
+  object-position: var(--hero-focus-x) var(--hero-focus-y);
+}
+
+/* Gradient overlay (left → right) for readable white text */
 .hero-overlay{
   position:absolute; inset:0;
   background: linear-gradient(
@@ -120,6 +131,39 @@ a{ color:inherit; text-decoration:none } /* links inherit text color; no underli
     rgba(2,6,23,0) 100%
   );
 }
+
+/* Layout inside the hero */
+.hero-grid{
+  display:grid; grid-template-columns:1fr;   /* stack on mobile */
+  gap:24px; align-items:start;
+  padding:48px 0 72px;
+}
+.hero-copy{
+  color:#fff;
+  max-width:560px;
+}
+.hero-copy h1{
+  font-size:clamp(36px,6.5vw,56px);
+  line-height:1.06; margin:16px 0;
+}
+.hero-copy .lede{
+  font-size:clamp(16px,2vw,20px);
+  opacity:.98;
+}
+
+@media (min-width: 992px){
+  .hero-grid{
+    grid-template-columns:1.1fr 360px; /* text + donate panel */
+    gap:24px;
+    padding:72px 0 96px;
+  }
+}
+
+/* On very small phones, nudge focus a bit higher */
+@media (max-width: 480px){
+  :root{ --hero-focus-y: 15%; }
+}
+
 
 /* Grid holds left copy and right donate panel */
 .hero-grid{
