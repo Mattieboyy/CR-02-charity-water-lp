@@ -1,47 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <!-- Sets character encoding -->
+  <meta charset="UTF-8" />
+  <!-- Makes the site responsive on mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Browser tab title -->
+  <title>Charity Water Landing Page</title>
+  <!-- Links to external stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+  <!-- ===== HEADER ===== -->
+  <!-- Fixed header containing logo and top-right buttons -->
+  <header class="site-header">
+    <div class="container header-row">
+      <!-- Left side: brand logo and name -->
+      <div class="brand">
+        <img src="img/cw_logo-2.png" 
+        class="brand-logo" />
+        
+      </div>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
+      <!-- Right side: Log in and Donate -->
+      <nav class="header-actions" aria-label="Top">
+        <a href="#" class="login">Log in</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="#donate" class="btn btn-primary donate-pill">Donate</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
+  <!-- ===== HERO SECTION ===== -->
+  <!-- This is the main visual banner at the top of the page -->
+  <section class="hero">
+    <!-- Full-width background image using <picture> for responsive formats -->
+    <div class="hero-media" aria-hidden="true">
+      <picture>
+        <!-- WEBP sources load first if browser supports it -->
+        <source type="img/Screenshot 2025-10-07 004150.png"
+          sizes="100vw" />
+        <!-- Fallback JPEG versions -->
+        <source type="image/jpeg"
+          srcset="img/Screenshot 2025-10-07 004150.png"
+          sizes="100vw" />
+        <!-- Default image fallback -->
+        <img src="img/Screenshot 2025-10-07 004150.png" alt="" />
+      </picture>
+      <!-- Transparent gradient overlay for readable text -->
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Container splits hero into text (left) + donate card (right) -->
+    <div class="container hero-grid">
+      <!-- Left: heading and short description -->
+      <div class="hero-copy">
+        <h1>Turn Hope Into Clean<br/> Water.</h1>
+        <p class="lede">
+          Join charity: water in bringing life-changing clean water to communities worldwide,
+          every dollar helps bring safe water—and hope—to communities around the world.
+        </p>
+      </div>
+
+      <!-- Right: interactive donation panel -->
+      <aside class="donate-panel" id="donate">
+        <!-- Yellow “Give” header -->
+        <div class="panel-header">Give</div>
+
+        <!-- “Once / Monthly” tabs -->
+        <div class="tab-row" role="tablist" aria-label="Donation cadence">
+          <button class="tab" role="tab" aria-selected="false">Once</button>
+          <button class="tab is-active" role="tab" aria-selected="true">Monthly</button>
         </div>
-    </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+        <!-- Subtitle for amount section -->
+        <div class="panel-subhead">Choose an amount</div>
+
+        <!-- Four preset amount buttons -->
+        <div class="amount-grid" role="group" aria-label="Preset amounts">
+          <button class="amount">$10</button>
+          <button class="amount">$50</button>
+          <button class="amount">$100</button>
+          <button class="amount is-other">Other</button>
+        </div>
+
+        <!-- Secondary action button below -->
+        <a href="#" class="btn btn-secondary wide">Sponsor a Project</a>
+
+        <!-- Fine print disclaimer -->
+        <p class="fineprint">
+          Secure Payment · This site is protected by reCAPTCHA and the Google
+          <a href="#">Privacy Policy</a> and <a href="#">Terms</a> apply.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== STORY SECTION ===== -->
+  <!-- Explains the organization’s background -->
+  <section class="story">
+    <h2>Our Story</h2>
+    <p>
+      Since 2006, charity: water has funded clean and safe drinking water projects
+      around the world. Clean water changes everything—health, education, income,
+      and opportunity. With our 100% model, every public donation goes straight to water projects.
+    </p>
+  </section>
+
+  <!-- ===== IMPACT STORY SECTION ===== -->
+  <!-- Real-world example of how donations change lives -->
+  <section class="impact-story">
+    <h2>Meet Amina</h2>
+    <div class="impact-content">
+      <img
+        src="img/Screenshot 2025-10-18 210748.png"
+        alt="Amina smiling with clean water"
+        class="impact-image"
+      />
+      <p>
+        Amina used to walk miles every day to collect water for her family. Thanks
+        to your support, her village now has a clean water well. Amina is able go to
+        school and her family is healthier and happier.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CALL-TO-ACTION SECTION ===== -->
+  <!-- Encourages the visitor to donate -->
+  <section class="call-to-action">
+    <h2>Make a Difference</h2>
+    <p>
+      Our work to end the water crisis needs your support. You can help open the door to education, income, dignity, and health — especially for women and children.
+    </p>
+    <a href="#donate" class="btn btn-primary donate-button">Donate Now</a>
+  </section>
+
+  <!-- ===== SMALL SCRIPT ===== -->
+  <!-- Adds button interactivity (highlight selected tab/amount) -->
+  <script>
+    // When a donation amount is clicked, highlight it
+    document.querySelectorAll('.amount').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.amount').forEach(b=>b.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+      });
+    });
+    // Toggle between “Once” and “Monthly”
+    document.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+      });
+    });
+  </script>
 </body>
 </html>
