@@ -19,7 +19,7 @@
   --container: 1200px;          /* max width for centered content */
 
   --hero-focus-x: 65%;  /* left↔right aim (65% = slight right bias) */
-  --hero-focus-y: 18%;  /* up↔down aim (smaller % = show more TOP) */
+  --hero-focus-y: 10%;  /* up↔down aim (smaller % = show more TOP) */
 }
 /* Hero focal point — adjust to keep her face in frame */
 
